@@ -76,11 +76,8 @@ app.get("/open", async (req, res) => {
   try {
     // transform.jsから関数をインポート
     const transform = require("./transform.js");
-    const { getOrder } = require("./test.js");
-
     // getOrder()の完了を待つ
     console.log("オーダーデータ取得中...");
-    await getOrder();
     console.log("オーダーデータ取得完了。transform処理開始...");
 
     // transformHLとtransformRを実行

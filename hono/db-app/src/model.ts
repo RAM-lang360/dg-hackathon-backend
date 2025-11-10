@@ -1,3 +1,7 @@
+type indicatorHL={
+    
+}
+
 class model {
     constructor() {
         this.indicatorHL = [];

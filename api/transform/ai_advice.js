@@ -17,7 +17,7 @@ async function ai_advice() {
 }
 
 async function postAPI() {
-  const api_key = "AIzaSyDnTmMb3jtnFLcloRnvXR3v3gDgJHUk6Mo";
+  const api_key = "API_key";
   const endpoint =
     "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
   const indicatorHL = getJsons("exinput.json");

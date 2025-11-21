@@ -1,0 +1,4 @@
+- [x] Read current Model implementation and tests
+- [x] Update Model.getAIResponse to return prompt and load data correctly
+- [x] Add unit tests covering getAIResponse happy path and env var errors
+- [ ] Run test suite for hono/db-app

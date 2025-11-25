@@ -1,0 +1,224 @@
+{
+  "2024-12": {
+    "light": {
+      "count": 29,
+      "total": 22000
+    },
+    "super_heavy": {
+      "count": 4,
+      "total": 9600
+    },
+    "heavy": {
+      "count": 25,
+      "total": 36900
+    },
+    "super_light": {
+      "count": 9,
+      "total": 2900
+    }
+  },
+  "2024-11": {
+    "super_light": {
+      "count": 13,
+      "total": 4100
+    },
+    "light": {
+      "count": 22,
+      "total": 16800
+    },
+    "super_heavy": {
+      "count": 5,
+      "total": 14100
+    },
+    "heavy": {
+      "count": 23,
+      "total": 34100
+    }
+  },
+  "2024-10": {
+    "light": {
+      "count": 16,
+      "total": 12800
+    },
+    "heavy": {
+      "count": 16,
+      "total": 25200
+    },
+    "super_light": {
+      "count": 11,
+      "total": 3600
+    },
+    "super_heavy": {
+      "count": 1,
+      "total": 2500
+    }
+  },
+  "2024-09": {
+    "heavy": {
+      "count": 15,
+      "total": 23400
+    },
+    "super_light": {
+      "count": 8,
+      "total": 2000
+    },
+    "light": {
+      "count": 25,
+      "total": 18600
+    },
+    "super_heavy": {
+      "count": 2,
+      "total": 6200
+    }
+  },
+  "2024-08": {
+    "heavy": {
+      "count": 29,
+      "total": 42900
+    },
+    "super_light": {
+      "count": 12,
+      "total": 3200
+    },
+    "super_heavy": {
+      "count": 7,
+      "total": 19500
+    },
+    "light": {
+      "count": 28,
+      "total": 20900
+    }
+  },
+  "2024-07": {
+    "light": {
+      "count": 22,
+      "total": 17100
+    },
+    "heavy": {
+      "count": 26,
+      "total": 37100
+    },
+    "super_heavy": {
+      "count": 3,
+      "total": 7500
+    },
+    "super_light": {
+      "count": 15,
+      "total": 3500
+    }
+  },
+  "2024-06": {
+    "light": {
+      "count": 20,
+      "total": 14500
+    },
+    "super_heavy": {
+      "count": 3,
+      "total": 7300
+    },
+    "heavy": {
+      "count": 19,
+      "total": 29500
+    },
+    "super_light": {
+      "count": 8,
+      "total": 2000
+    }
+  },
+  "2024-05": {
+    "heavy": {
+      "count": 24,
+      "total": 35100
+    },
+    "light": {
+      "count": 22,
+      "total": 16200
+    },
+    "super_heavy": {
+      "count": 7,
+      "total": 20600
+    },
+    "super_light": {
+      "count": 8,
+      "total": 2800
+    }
+  },
+  "2024-04": {
+    "light": {
+      "count": 26,
+      "total": 19500
+    },
+    "heavy": {
+      "count": 19,
+      "total": 27800
+    },
+    "super_light": {
+      "count": 9,
+      "total": 2100
+    },
+    "super_heavy": {
+      "count": 2,
+      "total": 5300
+    }
+  },
+  "2024-03": {
+    "light": {
+      "count": 27,
+      "total": 20800
+    },
+    "heavy": {
+      "count": 33,
+      "total": 49200
+    },
+    "super_light": {
+      "count": 15,
+      "total": 3900
+    },
+    "super_heavy": {
+      "count": 5,
+      "total": 12700
+    }
+  },
+  "2024-02": {
+    "super_light": {
+      "count": 9,
+      "total": 1700
+    },
+    "super_heavy": {
+      "count": 2,
+      "total": 4900
+    },
+    "heavy": {
+      "count": 16,
+      "total": 23700
+    },
+    "light": {
+      "count": 15,
+      "total": 10900
+    }
+  },
+  "2024-01": {
+    "light": {
+      "count": 19,
+      "total": 14900
+    },
+    "super_heavy": {
+      "count": 8,
+      "total": 22000
+    },
+    "heavy": {
+      "count": 33,
+      "total": 47300
+    },
+    "super_light": {
+      "count": 14,
+      "total": 4200
+    }
+  },
+  "2023-12": {
+    "super_light": {
+      "count": 1,
+      "total": 100
+    }
+  }
+}

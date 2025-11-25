@@ -1,3 +1,4 @@
+import { Order } from "./share";
 //カウントのカテゴリ
 export interface CountAndTotal {
   count: number;
@@ -13,4 +14,17 @@ export type MonthlyWeightsData = {
 
 export type WeightsType = {
   [key: string]: MonthlyWeightsData;
+}
+
+export type UserLatestOrder = {
+  [userId: string]: Order;
+}
+export type UserOrderList = UserLatestOrder[];
+
+export type WeekRange = number[][];
+
+export type DaysCounts = {
+  [key: string]: {
+    [key: string]: number;
+  };
 }

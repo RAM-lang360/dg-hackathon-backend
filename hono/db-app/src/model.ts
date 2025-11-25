@@ -32,6 +32,7 @@ export default class Model {
         this.raw_data = JSON.parse(jsonData);
         return this;
     }
+
     /// Gemini APIを呼び出してresponseに要約をセットする
     async getAIResponse() {
         const api_key = process.env.GEMINI_API_KEY!;
@@ -86,6 +87,11 @@ export default class Model {
         return this;
     }
 
+    //jsonをdataに保存
+    saveJsons(file_name: string, data: any): void {
+        const filePath = path.join(__dirname, `../data/${file_name}`);
+        fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
+    }
 
     /////// private //////
 

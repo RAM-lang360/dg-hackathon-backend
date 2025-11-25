@@ -2,3 +2,6 @@
 - [x] Update Model.getAIResponse to return prompt and load data correctly
 - [x] Add unit tests covering getAIResponse happy path and env var errors
 - [ ] Run test suite for hono/db-app
+- [x] Review `hono/db-app/test/view.test.ts` for repetition
+- [x] Refactor tests to reuse shared fixtures/helpers
+- [ ] Run vitest for hono/db-app

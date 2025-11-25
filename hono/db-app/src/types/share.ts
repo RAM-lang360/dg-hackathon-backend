@@ -35,7 +35,7 @@ type Item = {
 };
 
 /** 個別の注文情報 */
-type Order = {
+export type Order = {
     id: string;
     orderAt: number; // Unixミリ秒タイムスタンプを想定
     status: 'completed' | 'pending' | 'cancelled' | string;

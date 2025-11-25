@@ -37,5 +37,6 @@ describe('basic', () => {
         expect(typeof json.data.transformHL).toBe('object')
         expect(typeof json.data.transformR).toBe('object')
         expect(json.data.transformHL).toEqual(sortedWeightsFixture)
+        expect(json.data.transformR).toEqual(daysCountFixture)
     })
 })

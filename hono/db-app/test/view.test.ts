@@ -1,7 +1,8 @@
-import { beforeAll, beforeEach, describe, expect, it } from 'vitest'
-import { View } from '../src/view'
-import { readFileSync } from 'fs'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import path from 'path'
+import { readFileSync } from 'fs'
+import { View, type DashboardDataProvider } from '../src/view'
+import type { DashboardData } from '../src/types/dataview'
 
 const loadFixture = (fileName: string) => {
     const filePath = path.join(__dirname, 'fixtures', fileName)
@@ -10,40 +11,30 @@ const loadFixture = (fileName: string) => {
 }
 
 describe('View', () => {
-    let instance: View
-    let ordersFixture: any
-    let sortedWeightsFixture: any
-    let daysCountFixture: any
-    beforeAll(() => {
-        ordersFixture = loadFixture('orders.json')
-        sortedWeightsFixture = loadFixture('sorted_weights.json')
-        daysCountFixture = loadFixture('days_count.json')
-    })
+    let provider: DashboardDataProvider
+    let dashboardFixture: DashboardData
+    let view: View
 
     beforeEach(() => {
-        instance = new View()
+        dashboardFixture = {
+            sorted_weights: loadFixture('sorted_weights.json'),
+            days_counts: loadFixture('days_count.json'),
+        }
+        const getDashboardData = vi.fn<[], Promise<DashboardData>>().mockResolvedValue(dashboardFixture)
+        provider = { getDashboardData }
+        view = new View(provider)
     })
 
-    it('should create an instance of View', () => {
-        expect(instance).toBeDefined()
+    it('hydrates sorted weights and days count via response()', async () => {
+        await view.response()
+        expect(provider.getDashboardData).toHaveBeenCalledTimes(1)
+        expect(view.sortedData).toEqual(dashboardFixture.sorted_weights)
+        expect(view.daysCount).toEqual(dashboardFixture.days_counts)
     })
 
-    it('should get Rawdata transformed monthly', () => {
-        instance.transformSortedData(ordersFixture)
-        expect(instance.raw_data).toBeDefined()
-    })
-
-    it('should throw error for invalid raw data', () => {
-        instance.transformSortedData({ meta: {}, orders: null } as any).catch((e) => {
-            expect(e).toBeInstanceOf(Error)
-            expect(e.message).toBe("Invalid raw data format")
-        })
-    })
-
-    it('should return response with both transformed data', async () => {
-        instance.raw_data = ordersFixture
-        await instance.response()
-        expect(instance.sortedData).toEqual(sortedWeightsFixture)
-        expect(instance.daysCount).toEqual(daysCountFixture)
+    it('returns dashboard payload from getDashboardData()', async () => {
+        const result = await view.getDashboardData()
+        expect(provider.getDashboardData).toHaveBeenCalledTimes(1)
+        expect(result).toEqual(dashboardFixture)
     })
 })

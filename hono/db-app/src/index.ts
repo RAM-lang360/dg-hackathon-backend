@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
-import { View } from './view'
 import Model from './model'
+import { View } from './view'
 const app = new Hono()
 
 app.get('/', (c) => {
@@ -13,35 +13,18 @@ app.get('/health', (c) => {
 
 app.get("/get-data", async (c) => {
   try {
-    const model_instance = new Model();
-    const view_instance = new View();
+    const model = new Model();
+    await model.importOrders();
 
-    // データの取得
-    const rawData = model_instance.getRawData().raw_data;
-
-    if (!rawData) {
-      throw new Error("Raw data is not loaded");
-    }
-
-    view_instance.raw_data = rawData;
-
-    //データの整形
-    const response = await view_instance.response();
-    //データの保存
-    model_instance.saveJsons('sorted_weights.json', response.sortedData);
-    model_instance.saveJsons('days_count.json', response.daysCount);
-    //APIは現在はオフ
-    //AI要約の取得（非同期処理）
-    // const aiResponseModel = await model_instance.getAIResponse();
-
+    const view = new View(model);
+    await view.response();
 
     return c.json({
-      message: "transform処理完了",
+      message: "Dashboard data generated",
       status: 200,
       data: {
-        transformHL: response.sortedData,
-        transformR: response.daysCount,
-        aiAdvice: "" //aiResponseModel.responseを利用
+        sorted_weights: view.sortedData,
+        days_counts: view.daysCount,
       },
       timestamp: new Date().toISOString()
     });

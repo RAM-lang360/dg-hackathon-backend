@@ -1,30 +1,28 @@
-import { Order } from "./share";
-//カウントのカテゴリ
+// カウントのカテゴリ
 export interface CountAndTotal {
   count: number;
   total: number;
 }
-//User種別のカテゴリ
+
+// User種別のカテゴリ
 export type WeightCategory = "super_heavy" | "heavy" | "light" | "super_light";
 
-//1月当たりのUser種別の分類
-export type MonthlyWeightsData = {
-  [K in WeightCategory]: CountAndTotal;
-};
+// 1月当たりのUser種別の分類（存在するカテゴリーのみ保持）
+export type MonthlyWeightsData = Partial<Record<WeightCategory, CountAndTotal>>;
 
 export type WeightsType = {
-  [key: string]: MonthlyWeightsData;
+  [month: string]: MonthlyWeightsData;
 }
-
-export type UserLatestOrder = {
-  [userId: string]: Order;
-}
-export type UserOrderList = UserLatestOrder[];
 
 export type WeekRange = number[][];
 
 export type DaysCount = {
-  [key: string]: {
-    [key: string]: number;
+  [range: string]: {
+    [bucket: string]: number;
   };
 }
+
+export type DashboardData = {
+  sorted_weights: WeightsType;
+  days_counts: DaysCount;
+};

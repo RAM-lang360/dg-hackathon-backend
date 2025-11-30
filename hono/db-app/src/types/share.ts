@@ -1,3 +1,5 @@
+import type { CountAndTotal, WeightCategory } from "./dataview";
+
 /** 都道府県情報 */
 type Prefecture = {
     code: string;
@@ -73,12 +75,7 @@ export type UserTotals = {
     [userId: string]: number;
 }
 
-export type SortedUser = {
-    super_heavy: { count: number; total: number };
-    heavy: { count: number; total: number };
-    light: { count: number; total: number };
-    super_light: { count: number; total: number };
-};
+export type SortedUser = Partial<Record<WeightCategory, CountAndTotal>>;
 //毎月の重みづけしたカウントデータ
 export type WeightCount = {
     [key: string]: SortedUser;

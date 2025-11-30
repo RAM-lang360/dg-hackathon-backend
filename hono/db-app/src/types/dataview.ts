@@ -23,7 +23,7 @@ export type UserOrderList = UserLatestOrder[];
 
 export type WeekRange = number[][];
 
-export type DaysCounts = {
+export type DaysCount = {
   [key: string]: {
     [key: string]: number;
   };

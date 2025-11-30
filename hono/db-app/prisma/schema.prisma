@@ -1,0 +1,74 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Customer {
+  id        String   @id @db.VarChar(50)
+  name      String   @db.VarChar(255)
+  email     String   @db.VarChar(255)
+  phoneNumber String @db.VarChar(20)
+  gender    String   @db.VarChar(20)
+  birthDate String   @db.VarChar(20)
+  prefectureCode String @db.VarChar(10)
+  prefectureName String @db.VarChar(50)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  orders Order[]
+}
+
+model App {
+  id        String   @id @db.VarChar(50)
+  name      String   @db.VarChar(255)
+  iconImageUrl String @db.Text
+  platforms String[] @default([])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  orders Order[]
+  items  Item[]
+}
+
+model Item {
+  id        String   @id @db.VarChar(100)
+  appId     String   @db.VarChar(50)
+  name      String   @db.VarChar(255)
+  imageUrl  String   @db.Text
+  price     Int
+  currency  String   @db.VarChar(10)
+  category  String   @db.VarChar(50)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  app    App @relation(fields: [appId], references: [id])
+  orders Order[]
+  
+  @@index([appId])
+}
+
+model Order {
+  id            String   @id @db.VarChar(50)
+  orderAt       BigInt
+  status        String   @db.VarChar(50)
+  customerId    String   @db.VarChar(50)
+  appId         String   @db.VarChar(50)
+  paymentMethod String   @db.VarChar(50)
+  itemId        String   @db.VarChar(100)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  customer Customer @relation(fields: [customerId], references: [id])
+  app      App      @relation(fields: [appId], references: [id])
+  item     Item     @relation(fields: [itemId], references: [id])
+  
+  @@index([customerId])
+  @@index([appId])
+  @@index([itemId])
+}
+
